@@ -1,0 +1,36 @@
+version: '3'
+
+services:
+  postgres:
+    image: postgres:15.2-alpine
+    restart: always
+    environment:
+      TZ: "Asia/Tokyo"
+      POSTGRES_USER: stelixbloom
+      POSTGRES_PASSWORD: stelixbloom
+      POSTGRES_DB: person_db
+    ports:
+      - 15432:5432
+    volumes:
+      - postgres:/var/lib/postgresql/data
+      - ./postgres/initdb:/docker-entrypoint-initdb.d
+
+  pgadmin:
+    image: dpage/pgadmin4
+    restart: always
+    ports:
+      - 18080:80
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@example.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    volumes:
+      - pgadmin:/var/lib/pgadmin
+    depends_on:
+      - postgres
+
+volumes:
+  postgres:
+  pgadmin:
+
+# docker-compose up -d
+# docker-compose down -v

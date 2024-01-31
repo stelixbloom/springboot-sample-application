@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.springbootsample.repository.PersonMapper">
+    <insert id="insert" parameterType="com.example.springbootsample.dto.Person">
+        INSERT INTO person (name, age,gender, occupation)
+        VALUES (
+            #{name, jdbcType=VARCHAR},
+            #{age, jdbcType=INTEGER},
+            #{gender, jdbcType=VARCHAR},
+            #{occupation, jdbcType=VARCHAR} )
+    </insert>
+    <select id="selectAll" resultType="com.example.springbootsample.dto.Person">
+        SELECT * FROM person
+        ORDER BY id ASC
+    </select>
+    <select id="select" resultType="com.example.springbootsample.dto.Person">
+        SELECT * FROM person
+        WHERE id = #{id, jdbcType=VARCHAR}
+    </select>
+    <update id="update" parameterType="com.example.springbootsample.dto.Person">
+        UPDATE person
+        SET name = #{name, jdbcType=VARCHAR},
+            age = #{age, jdbcType=INTEGER},
+            gender = #{gender, jdbcType=VARCHAR},
+            occupation = #{occupation, jdbcType=VARCHAR}
+        WHERE id = #{id, jdbcType=INTEGER}
+    </update>
+    <delete id="delete">
+        DELETE FROM person
+        WHERE id = #{id, jdbcType=INTEGER}
+    </delete>
+</mapper>

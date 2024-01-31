@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>list</title>
+</head>
+<body>
+<h1>Person一覧</h1>
+
+<table>
+    <thead>
+    <tr>
+        <th>id</th>
+        <th>名前</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="person : ${persons}">
+        <td th:text="${person.id}"></td>
+        <td th:text="${person.name}"></td>
+        <td>
+            <div style="display: flex;">
+                <form action="/person" method="get" style="margin-right: 10px;">
+                    <button type="submit" name="id" th:value="${person.id}">詳細</button>
+                </form>
+                <form action="/person/update" method="get" style="margin-right: 10px;">
+                    <button type="submit" name="id" th:value="${person.id}">更新</button>
+                </form>
+                <form action="/person/delete/do" method="post" onsubmit="return confirm('本当に削除しますか？');">
+                    <button type="submit" name="id" th:value="${person.id}">削除</button>
+                </form>
+            </div>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<p th:text="${message}"></p>
+
+<form action="/person/register" method="get" style="margin-bottom: 10px;">
+    <button type="submit">新規追加</button>
+</form>
+
+<form action="/menu" method="get">
+    <button type="submit">メニューに戻る</button>
+</form>
+
+</body>
+</html>

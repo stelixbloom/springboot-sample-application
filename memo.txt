@@ -1,0 +1,99 @@
+spring-boot-sample-application作業履歴
+
+■課題
+画面からDML操作ができる、フロントからJavaへ値の受け渡しができる
+
+■技術
+spring-boot、Mybatis、Thymeleaf、Vue.js
+
+■作業memo
+⚪︎spring-boot-sampleの構成をもとにThymeleafで画面作成
+・新規プロジェクトで始める際は以下にチェックを入れる(漏れあるかも)
+　・Developer Tools - Spring Boot DevTools
+　・Web - Spring Web
+　・Template Engines - Thymeleaf
+　・PostgreSQL
+　・Mybatis
+・htmlフォームからのリクエスト(Get,Post)をcontrollerで受け取る
+
+⚪︎Thymeleaf→Vue.jsに置き換え
+
+・ポート
+　・spring-boot(8081)
+　・vue.js(8082)
+
+・spring-boot-sample-application直下でコマンド実施(たぶん)
+　・node.jsインストール
+　・npmインストール
+　・vue.jsインストール
+
+　・vue create web
+
+　→sudoでインストールなどしてる場合、作業ユーザーに権限与えてから作業(chmod,chown)
+
+・package.jsonを一部修正
+"build": "vue-cli-service build --dest spring-boot-sample-application/src/main/resources/static",
+
+・Vue Router使用
+・axios使用
+
+・ビルド
+webディレクトリで
+npm run build
+・Vueサーバー起動
+webディレクトリで
+npm run serve
+
+・Vue Routerで設定後、CORS設定(controllerにアノテーションつける)
+　→@CrossOrigin(origins = "http://localhost:8082")
+
+
+■その他メモ
+⚪︎Vue.js
+・vueのバージョン
+vue --version
+・vueが最新かどうか
+npm show @vue/cli version
+・vueが2か3か
+npm list vue
+
+◯Vuetify
+・色一覧
+- `red`
+- `pink`
+- `purple`
+- `deep-purple`
+- `indigo`
+- `blue`
+- `light-blue`
+- `cyan`
+- `teal`
+- `green`
+- `light-green`
+- `lime`
+- `yellow`
+- `amber`
+- `orange`
+- `deep-orange`
+- `brown`
+- `blue-grey`
+- `grey`
+- `black`
+- `white`
+
+lighten-{n}またはdarken-{n}で色の濃さ指定可能
+blue lighten-2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
