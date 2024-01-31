@@ -1,7 +1,4 @@
-<<<<<<< HEAD
 # springboot-sample-application
-=======
-# spring-boot-sample-application
 
 ## アプリ起動手順
 
@@ -36,7 +33,3 @@ General：postgres
 http://localhost:8082/menu  
 ・spring-boot  
 http://localhost:8081
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
->>>>>>> ded5b97 (first commit)
